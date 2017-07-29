@@ -170,7 +170,7 @@ endmacro()
 # Usage:
 #   detect_cuDNN()
 function(detect_cuDNN)
-  set(CUDNN_ROOT "" CACHE PATH "CUDNN root folder")
+  set(CUDNN_ROOT /usr/local/cudnn/cudnn)
 
   find_path(CUDNN_INCLUDE cudnn.h
             PATHS ${CUDNN_ROOT} $ENV{CUDNN_ROOT} ${CUDA_TOOLKIT_INCLUDE}
@@ -230,8 +230,7 @@ endfunction()
 ################################################################################################
 ###  Non macro section
 ################################################################################################
-
-find_package(CUDA 5.5 QUIET)
+find_package(CUDA 8.0 QUIET)
 find_cuda_helper_libs(curand)  # cmake 2.8.7 compartibility which doesn't search for curand
 
 if(NOT CUDA_FOUND)
